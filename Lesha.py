@@ -105,4 +105,3 @@ password.pack()
 password.bind("<Return>", CheckPassword)
 
 root.mainloop()
-
