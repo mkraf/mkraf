@@ -1,11 +1,10 @@
 from tkinter import *
 from subprocess import Popen as cmd
-import sys
 import ctypes
 import winreg
-import os
+import sys
 
-# Функция для блокировки клавиши Win
+# Функция для блокировки клавиш Win
 def block_win_key():
     # Блокируем клавиши Windows через реестр
     registry_path = r"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer"
