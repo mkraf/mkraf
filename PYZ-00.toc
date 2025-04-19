@@ -1,0 +1,1 @@
+('C:\\Users\\mkraf\\Desktop\\dist\\Lesha\\build\\Lesha\\PYZ-00.pyz', [])
